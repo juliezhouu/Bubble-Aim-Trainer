@@ -3,41 +3,39 @@ import random
 import time
 import pygame
 
-# --- initialize pygame ---
+# initialize pygame 
 pygame.init()
 
-# --- window setup ---
+# window setup 
 SCREEN_W, SCREEN_H = 800, 600
 DISPLAY = pygame.display.set_mode((SCREEN_W, SCREEN_H))
 pygame.display.set_caption(" Aim Trainer")
 
-# --- game settings ---
+# game settings
 SPAWN_DELAY =300  # milliseconds
 SPAWN_EVENT = pygame.USEREVENT
 MARGIN = 35
 UI_BAR = 55
 PLAYER_HEARTS = 4
 
-# --- colour palette ---
+# colour palette 
 BLUSH_BG = (255, 235, 245)
 SOFT_PINK = (255, 190, 210)
 CANDY_PINK = (255, 135, 170)
 CREAM = (255, 248, 250)
 CHARCOAL = (40, 40, 40)
 
-# --- font ---
+# font
 MAIN_FONT = pygame.font.SysFont("segoe ui", 26, bold=False)
 
-# --- background image for end screen ---
-END_BG = pygame.image.load(r"C:\Users\julie\Downloads\end_bg.png")   # make sure this file exists!
+# --- background img for endscreen
+END_BG = pygame.image.load(r"C:\Users\julie\Downloads\end_bg.png")  
 END_BG = pygame.transform.scale(END_BG, (SCREEN_W, SCREEN_H))
 
 
-# ----------------------------------------- #
+
 # target class
-# ----------------------------------------- #
 class Bubble:
-    """Cute expanding target bubble that gently pulses 💞"""
 
     MAX_RADIUS = 33
     GROW_SPEED = 0.23
@@ -67,23 +65,21 @@ class Bubble:
         pygame.draw.circle(surface, self.SHADE_ALT, (self.x, self.y), int(self.radius * 0.4))
 
     def is_clicked(self, mx, my):
-        """Detect hit using distance formula."""
+        """Detect hit using distance formula"""
         dist = math.sqrt((mx - self.x) ** 2 + (my - self.y) ** 2)
         return dist <= self.radius
 
 
-# --------------------- #
+
 # drawing functions
-# --------------------- #
+
 def render_scene(surface, bubbles):
-    """Draw background and all bubbles."""
     surface.fill(BLUSH_BG)
     for b in bubbles:
         b.draw(surface)
 
 
 def nice_time(seconds):
-    """Return time formatted as mm:ss.m"""
     milli = math.floor(int(seconds * 1000 % 1000) / 100)
     sec = int(round(seconds % 60, 1))
     mins = int(seconds // 60)
@@ -91,7 +87,6 @@ def nice_time(seconds):
 
 
 def render_ui(surface, elapsed, hits, fails):
-    """Draw top bar with game stats."""
     pygame.draw.rect(surface, SOFT_PINK, (0, 0, SCREEN_W, UI_BAR))
 
     time_txt = MAIN_FONT.render(f"Time: {nice_time(elapsed)}", True, CHARCOAL)
@@ -106,21 +101,16 @@ def render_ui(surface, elapsed, hits, fails):
     surface.blit(life_txt, (660, 10))
 
 
-# --------------------------------------------------------------------------- #
-# end screen (with background image 🌸)
-# --------------------------------------------------------------------------- #
+# end screen 
 def final_screen(surface, elapsed, hits, clicks):
-    """Show summary screen with background image and overlay."""
     # draw background image
     surface.blit(END_BG, (0, 0))
-
-    # soft pink overlay
     overlay = pygame.Surface((SCREEN_W, SCREEN_H))
     overlay.set_alpha(70)
     overlay.fill((255, 200, 220))
     surface.blit(overlay, (0, 0))
 
-    # compute stats
+    # stats
     accuracy = round(hits / clicks * 100, 1) if clicks > 0 else 0
     speed = round(hits / elapsed, 1) if elapsed > 0 else 0
 
@@ -148,9 +138,7 @@ def final_screen(surface, elapsed, hits, clicks):
                 quit()
 
 
-# ----------------- #
-# main game loop
-# ----------------- #
+# main game loop purr
 def main():
     running = True
     bubbles = []
@@ -204,4 +192,5 @@ def main():
 # run the game
 # -------------------- #
 if __name__ == "__main__":
+
     main()
