@@ -28,7 +28,7 @@ CHARCOAL = (40, 40, 40)
 # font
 MAIN_FONT = pygame.font.SysFont("segoe ui", 26, bold=False)
 
-# --- background img for endscreen
+#background img for endscreen
 END_BG = pygame.image.load(r"C:\Users\julie\Downloads\end_bg.png")  
 END_BG = pygame.transform.scale(END_BG, (SCREEN_W, SCREEN_H))
 
@@ -188,9 +188,9 @@ def main():
     pygame.quit()
 
 
-# -------------------- #
+
 # run the game
-# -------------------- #
 if __name__ == "__main__":
 
     main()
+
