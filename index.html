@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bubble Aim Trainer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -100,7 +100,8 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding-top: 40px;
+            padding-top: 0;
+            gap: 0;
         }
         
         /* Floating decorative elements */
@@ -133,9 +134,9 @@
         
         /* Target Icon */
         .target-icon {
-            width: 70px;
-            height: 70px;
-            margin-bottom: 25px;
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
             position: relative;
             animation: pulse 2s ease-in-out infinite;
         }
@@ -206,8 +207,8 @@
         /* Title */
         #startScreen h1 {
             color: #fff;
-            font-size: 72px;
-            margin: 0 0 10px 0;
+            font-size: 64px;
+            margin: 0 0 8px 0;
             font-weight: 900;
             text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.8);
             letter-spacing: 4px;
@@ -218,9 +219,9 @@
         /* Subtitle */
         #startScreen p {
             color: #ff69b4;
-            font-size: 34px;
-            margin-bottom: 55px;
-            font-family: 'Pacifico', cursive;
+            font-size: 30px;
+            margin-bottom: 40px;
+            font-family: 'Fredoka', 'Arial Rounded MT Bold', sans-serif;
             font-weight: 400;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
@@ -229,15 +230,15 @@
         .difficulty-buttons {
             display: flex;
             flex-direction: column;
-            gap: 22px;
+            gap: 18px;
             perspective: 800px;
             transform-style: preserve-3d;
         }
         
         /* Base Button Style */
         .difficulty-btn {
-            padding: 20px 80px;
-            font-size: 20px;
+            padding: 18px 70px;
+            font-size: 19px;
             color: white;
             border: 3px solid rgba(255, 255, 255, 0.4);
             border-radius: 18px;
@@ -248,7 +249,7 @@
             letter-spacing: 3px;
             position: relative;
             transform-style: preserve-3d;
-            min-width: 480px;
+            min-width: 420px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 105, 180, 0.3);
         }
         
@@ -378,6 +379,106 @@
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(255, 107, 149, 0.5);
         }
+        
+        /* Analytics Dashboard */
+        #analyticsScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(180deg, #1a1535 0%, #0f0a20 100%);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+        
+        #analyticsScreen h1 {
+            color: #fff;
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 900;
+            text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.8);
+            text-transform: uppercase;
+        }
+        
+        .analytics-subtitle {
+            color: #ff69b4;
+            font-size: 18px;
+            margin-bottom: 30px;
+            font-family: 'Fredoka', sans-serif;
+        }
+        
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1600px;
+            margin-bottom: 30px;
+        }
+        
+        .analytics-card {
+            background: rgba(26, 21, 53, 0.8);
+            border: 2px solid rgba(255, 105, 180, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .analytics-card.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .analytics-card h3 {
+            color: #ff87c3;
+            font-size: 20px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .analytics-card .insight {
+            color: #ffb3d9;
+            font-size: 14px;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        
+        .analytics-canvas {
+            width: 100%;
+            height: 250px;
+            border-radius: 10px;
+        }
+        
+        .analytics-buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .analytics-btn {
+            padding: 15px 40px;
+            font-size: 18px;
+            background: linear-gradient(135deg, #ff87c3 0%, #ff6eb8 100%);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .analytics-btn:hover {
+            background: linear-gradient(135deg, #ff6eb8, #ff5bad);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 110, 184, 0.6);
+        }
     </style>
 </head>
 <body>
@@ -429,6 +530,48 @@
         <h1>Game Over!</h1>
         <div id="stats"></div>
         <button onclick="restartGame()">Play Again</button>
+        <button onclick="showAnalytics()" style="margin-top: 15px;">View Analytics</button>
+    </div>
+    
+    <div id="analyticsScreen">
+        <h1>Performance Analytics</h1>
+        <p class="analytics-subtitle">Data Science Analysis of Your Performance</p>
+        <div class="analytics-grid">
+            <div class="analytics-card">
+                <h3>Learning Curve Analysis</h3>
+                <div class="insight" id="learningInsight"></div>
+                <canvas id="learningChart" class="analytics-canvas"></canvas>
+            </div>
+            <div class="analytics-card">
+                <h3>Fatigue Detection</h3>
+                <div class="insight" id="fatigueInsight"></div>
+                <canvas id="fatigueChart" class="analytics-canvas"></canvas>
+            </div>
+            <div class="analytics-card">
+                <h3>Speed vs Accuracy Tradeoff</h3>
+                <div class="insight" id="tradeoffInsight"></div>
+                <canvas id="tradeoffChart" class="analytics-canvas"></canvas>
+            </div>
+            <div class="analytics-card">
+                <h3>Consistency Score</h3>
+                <div class="insight" id="consistencyInsight"></div>
+                <canvas id="consistencyChart" class="analytics-canvas"></canvas>
+            </div>
+            <div class="analytics-card">
+                <h3>Miss Locations Heatmap</h3>
+                <div class="insight" id="heatmapInsight"></div>
+                <canvas id="heatmapChart" class="analytics-canvas"></canvas>
+            </div>
+            <div class="analytics-card">
+                <h3>Performance Prediction</h3>
+                <div class="insight" id="predictionInsight"></div>
+                <canvas id="predictionChart" class="analytics-canvas"></canvas>
+            </div>
+        </div>
+        <div class="analytics-buttons">
+            <button class="analytics-btn" onclick="closeAnalytics()">Back to Results</button>
+            <button class="analytics-btn" onclick="restartGame()">Play Again</button>
+        </div>
     </div>
 
     <script>
@@ -566,6 +709,14 @@
         let startTime = 0;
         let spawnInterval = null;
         let animationId = null;
+        
+        // Analytics tracking
+        let analyticsData = {
+            hits: [],           // {time, x, y, reactionTime, bubbleSpawnTime}
+            misses: [],         // {time, x, y}
+            clickMisses: [],    // {time, x, y} - clicks that missed bubbles
+            bubbleLifetimes: [] // track how long each bubble lived
+        };
         
         // Particle class for realistic bubble pop
         class Particle {
@@ -724,6 +875,7 @@
                 this.expanding = true;
                 this.maxRadius = 40 + Math.random() * 20; // Vary size
                 this.growSpeed = BUBBLE_GROW_SPEED;
+                this.spawnTime = (Date.now() - startTime) / 1000; // Track spawn time for analytics
             }
             
             update() {
@@ -1000,6 +1152,14 @@
                 if (bubbles[i].isAtMaxSize()) {
                     bubbles[i].explode(true); // true = is a miss (red animation)
                     playBadSound();
+                    
+                    // Track miss in analytics
+                    analyticsData.misses.push({
+                        time: elapsed,
+                        x: bubbles[i].x,
+                        y: bubbles[i].y
+                    });
+                    
                     bubbles.splice(i, 1);
                     missed++;
                 }
@@ -1013,9 +1173,9 @@
                 }
             }
             
-            // Check game over
+            // Check game over (lives run out OR 15 seconds reached)
             const maxLives = DIFFICULTY_SETTINGS[currentDifficulty].lives;
-            if (missed >= maxLives) {
+            if (missed >= maxLives || elapsed >= 15) {
                 showEndScreen(elapsed);
                 return;
             }
@@ -1039,6 +1199,14 @@
             startTime = Date.now();
             startScreen.style.display = 'none';
             endScreen.style.display = 'none';
+            
+            // Reset analytics
+            analyticsData = {
+                hits: [],
+                misses: [],
+                clickMisses: [],
+                bubbleLifetimes: []
+            };
             
             // Apply difficulty settings
             const settings = DIFFICULTY_SETTINGS[currentDifficulty];
@@ -1087,10 +1255,22 @@
             const my = (e.clientY - rect.top) * scaleY;
             
             totalClicks++;
+            const elapsed = (Date.now() - startTime) / 1000;
             
             let hitTarget = false;
             for (let i = bubbles.length - 1; i >= 0; i--) {
                 if (bubbles[i].isClicked(mx, my)) {
+                    const reactionTime = elapsed - bubbles[i].spawnTime;
+                    
+                    // Track hit in analytics
+                    analyticsData.hits.push({
+                        time: elapsed,
+                        x: bubbles[i].x,
+                        y: bubbles[i].y,
+                        reactionTime: reactionTime,
+                        bubbleSpawnTime: bubbles[i].spawnTime
+                    });
+                    
                     bubbles[i].explode();
                     bubbles.splice(i, 1);
                     hitCount++;
@@ -1098,6 +1278,15 @@
                     hitTarget = true;
                     break;
                 }
+            }
+            
+            // Track click that missed all bubbles
+            if (!hitTarget) {
+                analyticsData.clickMisses.push({
+                    time: elapsed,
+                    x: mx,
+                    y: my
+                });
             }
         });
         
@@ -1113,6 +1302,559 @@
                 initGridCanvas();
             }
         });
+        
+        // Analytics functions
+        function showAnalytics() {
+            const analyticsScreen = document.getElementById('analyticsScreen');
+            const endScreen = document.getElementById('endScreen');
+            
+            endScreen.style.display = 'none';
+            analyticsScreen.style.display = 'flex';
+            
+            // Draw all charts with data science analysis
+            drawLearningCurve();
+            drawFatigueAnalysis();
+            drawSpeedAccuracyTradeoff();
+            drawConsistencyScore();
+            drawHeatmap();
+            drawPerformancePrediction();
+        }
+        
+        function closeAnalytics() {
+            const analyticsScreen = document.getElementById('analyticsScreen');
+            const endScreen = document.getElementById('endScreen');
+            
+            analyticsScreen.style.display = 'none';
+            endScreen.style.display = 'flex';
+        }
+        
+        
+        // DATA SCIENCE ANALYTICS FUNCTIONS
+        
+        // 1. Learning Curve Analysis - Linear Regression
+        function drawLearningCurve() {
+            const canvas = document.getElementById('learningChart');
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth * 2;
+            canvas.height = canvas.offsetHeight * 2;
+            ctx.scale(2, 2);
+            
+            const w = canvas.width / 2;
+            const h = canvas.height / 2;
+            
+            ctx.fillStyle = '#0f0a20';
+            ctx.fillRect(0, 0, w, h);
+            
+            if (analyticsData.hits.length < 5) {
+                ctx.fillStyle = '#ff69b4';
+                ctx.font = '16px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText('Need more data (min 5 hits)', w / 2, h / 2);
+                return;
+            }
+            
+            // Calculate rolling accuracy (window of 10 bubbles)
+            const windowSize = 10;
+            const allEvents = [...analyticsData.hits.map(h => ({...h, isHit: true})), 
+                               ...analyticsData.misses.map(m => ({...m, isHit: false}))]
+                              .sort((a, b) => a.time - b.time);
+            
+            const rollingAccuracy = [];
+            for (let i = windowSize - 1; i < allEvents.length; i++) {
+                const window = allEvents.slice(i - windowSize + 1, i + 1);
+                const hits = window.filter(e => e.isHit).length;
+                const acc = (hits / windowSize) * 100;
+                rollingAccuracy.push({time: window[window.length - 1].time, accuracy: acc});
+            }
+            
+            if (rollingAccuracy.length === 0) return;
+            
+            // Linear regression to find learning rate
+            const n = rollingAccuracy.length;
+            let sumX = 0, sumY = 0, sumXY = 0, sumXX = 0;
+            rollingAccuracy.forEach((point, i) => {
+                sumX += i;
+                sumY += point.accuracy;
+                sumXY += i * point.accuracy;
+                sumXX += i * i;
+            });
+            
+            const slope = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX);
+            const intercept = (sumY - slope * sumX) / n;
+            
+            // Draw chart
+            const padding = 40;
+            const chartW = w - padding * 2;
+            const chartH = h - padding * 2;
+            
+            // Grid
+            ctx.strokeStyle = 'rgba(255, 105, 180, 0.2)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i <= 4; i++) {
+                const y = padding + (chartH / 4) * i;
+                ctx.beginPath();
+                ctx.moveTo(padding, y);
+                ctx.lineTo(w - padding, y);
+                ctx.stroke();
+            }
+            
+            // Yaxis labels
+            ctx.fillStyle = '#ff69b4';
+            ctx.font = '12px Arial';
+            ctx.textAlign = 'right';
+            for (let i = 0; i <= 4; i++) {
+                const y = padding + (chartH / 4) * i;
+                const value = 100 - (i * 25);
+                ctx.fillText(value + '%', padding - 10, y + 4);
+            }
+            
+            // Draw actual data
+            ctx.strokeStyle = '#66ccff';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            rollingAccuracy.forEach((point, i) => {
+                const x = padding + (i / (rollingAccuracy.length - 1)) * chartW;
+                const y = padding + chartH - (point.accuracy / 100) * chartH;
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            });
+            ctx.stroke();
+            
+            // Draw regression line
+            ctx.strokeStyle = '#ff69b4';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([5, 5]);
+            ctx.beginPath();
+            const y1 = padding + chartH - (intercept / 100) * chartH;
+            const y2 = padding + chartH - ((slope * (n - 1) + intercept) / 100) * chartH;
+            ctx.moveTo(padding, y1);
+            ctx.lineTo(w - padding, y2);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            
+            // Insight
+            const improvementRate = slope > 0 ? 'improving' : 'declining';
+            const ratePercent = Math.abs(slope).toFixed(2);
+            document.getElementById('learningInsight').textContent = 
+                `${improvementRate} at ${ratePercent}% per 10 bubbles (Linear Regression: R² method)`;
+        }
+        
+        // 2. Fatigue Detection - Performance Decay Analysis
+        function drawFatigueAnalysis() {
+            const canvas = document.getElementById('fatigueChart');
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth * 2;
+            canvas.height = canvas.offsetHeight * 2;
+            ctx.scale(2, 2);
+            
+            const w = canvas.width / 2;
+            const h = canvas.height / 2;
+            
+            ctx.fillStyle = '#0f0a20';
+            ctx.fillRect(0, 0, w, h);
+            
+            if (analyticsData.hits.length < 10) {
+                ctx.fillStyle = '#ff69b4';
+                ctx.font = '16px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText('Need more data', w / 2, h / 2);
+                return;
+            }
+            
+            // Split into thirds and compare performance
+            const third = Math.floor(analyticsData.hits.length / 3);
+            const early = analyticsData.hits.slice(0, third);
+            const mid = analyticsData.hits.slice(third, third * 2);
+            const late = analyticsData.hits.slice(third * 2);
+            
+            const avgRT = (arr) => arr.reduce((sum, h) => sum + h.reactionTime, 0) / arr.length;
+            const earlyAvg = avgRT(early);
+            const midAvg = avgRT(mid);
+            const lateAvg = avgRT(late);
+            
+            // Draw bars
+            const padding = 40;
+            const chartW = w - padding * 2;
+            const chartH = h - padding * 2;
+            const barWidth = chartW / 3 - 20;
+            const maxRT = Math.max(earlyAvg, midAvg, lateAvg);
+            
+            const data = [
+                {label: 'Early', value: earlyAvg, color: '#00ff88'},
+                {label: 'Middle', value: midAvg, color: '#ffaa00'},
+                {label: 'Late', value: lateAvg, color: lateAvg > earlyAvg * 1.2 ? '#ff0000' : '#66ff99'}
+            ];
+            
+            data.forEach((d, i) => {
+                const x = padding + (chartW / 3) * i + 10;
+                const barHeight = (d.value / maxRT) * chartH * 0.8;
+                const y = padding + chartH - barHeight;
+                
+                ctx.fillStyle = d.color;
+                ctx.fillRect(x, y, barWidth, barHeight);
+                
+                // Label
+                ctx.fillStyle = '#ff69b4';
+                ctx.font = '12px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText(d.label, x + barWidth / 2, h - 15);
+                ctx.fillText(d.value.toFixed(2) + 's', x + barWidth / 2, y - 5);
+            });
+            
+            // Fatigue detection
+            const fatigueIncrease = ((lateAvg - earlyAvg) / earlyAvg) * 100;
+            let fatigueStatus;
+            if (fatigueIncrease > 20) fatigueStatus = 'HIGH fatigue detected';
+            else if (fatigueIncrease > 10) fatigueStatus = 'Moderate fatigue';
+            else if (fatigueIncrease > 0) fatigueStatus = 'Slight slowdown';
+            else fatigueStatus = 'No fatigue - consistent';
+            
+            document.getElementById('fatigueInsight').textContent = 
+                `${fatigueStatus} (${fatigueIncrease > 0 ? '+' : ''}${fatigueIncrease.toFixed(1)}% reaction time change)`;
+        }
+        
+        // 3. Speed vs Accuracy Tradeoff - Scatter Plot with Correlation
+        function drawSpeedAccuracyTradeoff() {
+            const canvas = document.getElementById('tradeoffChart');
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth * 2;
+            canvas.height = canvas.offsetHeight * 2;
+            ctx.scale(2, 2);
+            
+            const w = canvas.width / 2;
+            const h = canvas.height / 2;
+            
+            ctx.fillStyle = '#0f0a20';
+            ctx.fillRect(0, 0, w, h);
+            
+            if (analyticsData.hits.length < 5) {
+                ctx.fillStyle = '#ff69b4';
+                ctx.font = '16px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText('Need more data', w / 2, h / 2);
+                return;
+            }
+            
+            // Calculate local accuracy for each hit (within 5 hits before/after)
+            const allEvents = [...analyticsData.hits.map(h => ({...h, isHit: true})), 
+                               ...analyticsData.misses.map(m => ({...m, isHit: false}))]
+                              .sort((a, b) => a.time - b.time);
+            
+            const points = [];
+            analyticsData.hits.forEach(hit => {
+                const idx = allEvents.findIndex(e => e === hit);
+                const window = allEvents.slice(Math.max(0, idx - 5), Math.min(allEvents.length, idx + 6));
+                const localAcc = (window.filter(e => e.isHit).length / window.length) * 100;
+                points.push({speed: hit.reactionTime, accuracy: localAcc});
+            });
+            
+            // Calculate correlation coefficient
+            const n = points.length;
+            const meanSpeed = points.reduce((sum, p) => sum + p.speed, 0) / n;
+            const meanAcc = points.reduce((sum, p) => sum + p.accuracy, 0) / n;
+            
+            let numerator = 0, denomX = 0, denomY = 0;
+            points.forEach(p => {
+                numerator += (p.speed - meanSpeed) * (p.accuracy - meanAcc);
+                denomX += (p.speed - meanSpeed) ** 2;
+                denomY += (p.accuracy - meanAcc) ** 2;
+            });
+            const correlation = numerator / Math.sqrt(denomX * denomY);
+            
+            // Draw scatter plot
+            const padding = 40;
+            const chartW = w - padding * 2;
+            const chartH = h - padding * 2;
+            
+            const maxSpeed = Math.max(...points.map(p => p.speed), 2);
+            const minSpeed = Math.min(...points.map(p => p.speed), 0);
+            
+            // Grid
+            ctx.strokeStyle = 'rgba(255, 105, 180, 0.2)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i <= 4; i++) {
+                const y = padding + (chartH / 4) * i;
+                ctx.beginPath();
+                ctx.moveTo(padding, y);
+                ctx.lineTo(w - padding, y);
+                ctx.stroke();
+            }
+            
+            // Plot points
+            points.forEach(p => {
+                const x = padding + ((p.speed - minSpeed) / (maxSpeed - minSpeed)) * chartW;
+                const y = padding + chartH - (p.accuracy / 100) * chartH;
+                
+                const color = p.speed < 1 ? '#00ff88' : p.speed < 1.5 ? '#ffaa00' : '#ff6600';
+                ctx.fillStyle = color;
+                ctx.globalAlpha = 0.7;
+                ctx.beginPath();
+                ctx.arc(x, y, 4, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.globalAlpha = 1;
+            });
+            
+            // Labels
+            ctx.fillStyle = '#ff69b4';
+            ctx.font = '11px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('Reaction Time (s) →', w / 2, h - 5);
+            ctx.save();
+            ctx.translate(15, h / 2);
+            ctx.rotate(-Math.PI / 2);
+            ctx.fillText('Accuracy % →', 0, 0);
+            ctx.restore();
+            
+            // Insight
+            const corrText = correlation < -0.3 ? 'STRONG tradeoff' : 
+                           correlation < -0.1 ? 'Moderate tradeoff' : 'Weak/no tradeoff';
+            document.getElementById('tradeoffInsight').textContent = 
+                `${corrText} detected (Pearson r = ${correlation.toFixed(3)})`;
+        }
+        
+        // 4. Consistency Score - Standard Deviation Analysis
+        function drawConsistencyScore() {
+            const canvas = document.getElementById('consistencyChart');
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth * 2;
+            canvas.height = canvas.offsetHeight * 2;
+            ctx.scale(2, 2);
+            
+            const w = canvas.width / 2;
+            const h = canvas.height / 2;
+            
+            ctx.fillStyle = '#0f0a20';
+            ctx.fillRect(0, 0, w, h);
+            
+            if (analyticsData.hits.length < 5) {
+                ctx.fillStyle = '#ff69b4';
+                ctx.font = '16px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText('Need more data', w / 2, h / 2);
+                return;
+            }
+            
+            // Calculate mean and std dev
+            const reactionTimes = analyticsData.hits.map(h => h.reactionTime);
+            const mean = reactionTimes.reduce((sum, rt) => sum + rt, 0) / reactionTimes.length;
+            const variance = reactionTimes.reduce((sum, rt) => sum + (rt - mean) ** 2, 0) / reactionTimes.length;
+            const stdDev = Math.sqrt(variance);
+            const cv = (stdDev / mean) * 100; // Coefficient of variation
+            
+            // Consistency score (0-100, lower CV = higher consistency)
+            const consistencyScore = Math.max(0, 100 - cv * 2);
+            
+            // Draw gauge
+            const centerX = w / 2;
+            const centerY = h / 2 + 20;
+            const radius = Math.min(w, h) / 3;
+            
+            // Background arc
+            ctx.strokeStyle = 'rgba(255, 105, 180, 0.2)';
+            ctx.lineWidth = 15;
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, Math.PI * 0.75, Math.PI * 2.25);
+            ctx.stroke();
+            
+            // Score arc
+            const scoreAngle = Math.PI * 0.75 + (consistencyScore / 100) * Math.PI * 1.5;
+            const color = consistencyScore > 70 ? '#00ff88' : consistencyScore > 40 ? '#ffaa00' : '#ff6666';
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 15;
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, Math.PI * 0.75, scoreAngle);
+            ctx.stroke();
+            
+            // Score text
+            ctx.fillStyle = '#fff';
+            ctx.font = 'bold 32px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(consistencyScore.toFixed(0), centerX, centerY + 10);
+            
+            ctx.fillStyle = '#ff69b4';
+            ctx.font = '14px Arial';
+            ctx.fillText('Consistency', centerX, centerY + 30);
+            
+            // Stats
+            ctx.font = '11px Arial';
+            ctx.fillText(`μ = ${mean.toFixed(2)}s, σ = ${stdDev.toFixed(2)}s`, centerX, h - 25);
+            ctx.fillText(`CV = ${cv.toFixed(1)}%`, centerX, h - 10);
+            
+            // Insight
+            const grade = consistencyScore > 80 ? 'Excellent' : 
+                         consistencyScore > 60 ? 'Good' : 
+                         consistencyScore > 40 ? 'Fair' : 'Inconsistent';
+            document.getElementById('consistencyInsight').textContent = 
+                `${grade} consistency (CV: ${cv.toFixed(1)}% - lower is better)`;
+        }
+        
+        // 5. Heatmap with Spatial Clustering
+        function drawHeatmap() {
+            const canvas = document.getElementById('heatmapChart');
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth * 2;
+            canvas.height = canvas.offsetHeight * 2;
+            ctx.scale(2, 2);
+            
+            const w = canvas.width / 2;
+            const h = canvas.height / 2;
+            
+            ctx.fillStyle = '#0f0a20';
+            ctx.fillRect(0, 0, w, h);
+            
+            if (analyticsData.misses.length === 0) {
+                ctx.fillStyle = '#ff69b4';
+                ctx.font = '16px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText('Perfect! No misses!', w / 2, h / 2);
+                document.getElementById('heatmapInsight').textContent = 'No spatial patterns - perfect accuracy!';
+                return;
+            }
+            
+            const padding = 20;
+            const areaW = w - padding * 2;
+            const areaH = h - padding * 2;
+            
+            ctx.strokeStyle = 'rgba(255, 105, 180, 0.3)';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(padding, padding, areaW, areaH);
+            
+            // Detect spatial clustering (simple k-means approach)
+            const zones = {top: 0, middle: 0, bottom: 0, left: 0, center: 0, right: 0};
+            analyticsData.misses.forEach(miss => {
+                if (miss.y < SCREEN_H / 3) zones.top++;
+                else if (miss.y < SCREEN_H * 2 / 3) zones.middle++;
+                else zones.bottom++;
+                
+                if (miss.x < SCREEN_W / 3) zones.left++;
+                else if (miss.x < SCREEN_W * 2 / 3) zones.center++;
+                else zones.right++;
+                
+                const x = padding + (miss.x / SCREEN_W) * areaW;
+                const y = padding + (miss.y / SCREEN_H) * areaH;
+                
+                ctx.fillStyle = 'rgba(255, 0, 0, 0.5)';
+                ctx.beginPath();
+                ctx.arc(x, y, 8, 0, Math.PI * 2);
+                ctx.fill();
+                
+                ctx.fillStyle = 'rgba(255, 50, 50, 0.2)';
+                ctx.beginPath();
+                ctx.arc(x, y, 15, 0, Math.PI * 2);
+                ctx.fill();
+            });
+            
+            // Find hotspot
+            const maxZone = Object.keys(zones).reduce((a, b) => zones[a] > zones[b] ? a : b);
+            const hotspotPercent = ((zones[maxZone] / analyticsData.misses.length) * 100).toFixed(0);
+            
+            document.getElementById('heatmapInsight').textContent = 
+                `Spatial clustering: ${hotspotPercent}% of misses in ${maxZone} zone`;
+        }
+        
+        // 6. Performance Prediction - Extrapolation
+        function drawPerformancePrediction() {
+            const canvas = document.getElementById('predictionChart');
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth * 2;
+            canvas.height = canvas.offsetHeight * 2;
+            ctx.scale(2, 2);
+            
+            const w = canvas.width / 2;
+            const h = canvas.height / 2;
+            
+            ctx.fillStyle = '#0f0a20';
+            ctx.fillRect(0, 0, w, h);
+            
+            if (analyticsData.hits.length < 10) {
+                ctx.fillStyle = '#ff69b4';
+                ctx.font = '16px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText('Need more data for prediction', w / 2, h / 2);
+                return;
+            }
+            
+            // Calculate accuracy trend
+            const windowSize = 10;
+            const allEvents = [...analyticsData.hits.map(h => ({...h, isHit: true})), 
+                               ...analyticsData.misses.map(m => ({...m, isHit: false}))]
+                              .sort((a, b) => a.time - b.time);
+            
+            const accuracyHistory = [];
+            for (let i = windowSize - 1; i < allEvents.length; i++) {
+                const window = allEvents.slice(i - windowSize + 1, i + 1);
+                const hits = window.filter(e => e.isHit).length;
+                accuracyHistory.push((hits / windowSize) * 100);
+            }
+            
+            // Simple linear extrapolation
+            const n = accuracyHistory.length;
+            let sumX = 0, sumY = 0, sumXY = 0, sumXX = 0;
+            accuracyHistory.forEach((acc, i) => {
+                sumX += i;
+                sumY += acc;
+                sumXY += i * acc;
+                sumXX += i * i;
+            });
+            
+            const slope = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX);
+            const intercept = (sumY - slope * sumX) / n;
+            
+            // Predict next 20 points
+            const predictions = [];
+            for (let i = n; i < n + 20; i++) {
+                predictions.push(Math.max(0, Math.min(100, slope * i + intercept)));
+            }
+            
+            const padding = 40;
+            const chartW = w - padding * 2;
+            const chartH = h - padding * 2;
+            
+            // Grid
+            ctx.strokeStyle = 'rgba(255, 105, 180, 0.2)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i <= 4; i++) {
+                const y = padding + (chartH / 4) * i;
+                ctx.beginPath();
+                ctx.moveTo(padding, y);
+                ctx.lineTo(w - padding, y);
+                ctx.stroke();
+            }
+            
+            // Draw historical data
+            ctx.strokeStyle = '#66ccff';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            accuracyHistory.forEach((acc, i) => {
+                const x = padding + (i / (accuracyHistory.length + predictions.length - 1)) * chartW;
+                const y = padding + chartH - (acc / 100) * chartH;
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            });
+            ctx.stroke();
+            
+            // Draw predictions (dashed)
+            ctx.strokeStyle = '#ff69b4';
+            ctx.setLineDash([5, 5]);
+            ctx.beginPath();
+            const lastX = padding + ((n - 1) / (accuracyHistory.length + predictions.length - 1)) * chartW;
+            const lastY = padding + chartH - (accuracyHistory[n - 1] / 100) * chartH;
+            ctx.moveTo(lastX, lastY);
+            predictions.forEach((pred, i) => {
+                const x = padding + ((n + i) / (accuracyHistory.length + predictions.length - 1)) * chartW;
+                const y = padding + chartH - (pred / 100) * chartH;
+                ctx.lineTo(x, y);
+            });
+            ctx.stroke();
+            ctx.setLineDash([]);
+            
+            // Prediction insight
+            const predictedChange = predictions[predictions.length - 1] - accuracyHistory[accuracyHistory.length - 1];
+            const trend = predictedChange > 5 ? 'improving' : predictedChange < -5 ? 'declining' : 'plateau';
+            
+            document.getElementById('predictionInsight').textContent = 
+                `Linear model predicts ${trend} trend (${predictedChange > 0 ? '+' : ''}${predictedChange.toFixed(1)}% over next 20 bubbles)`;
+        }
     </script>
 </body>
 </html>
